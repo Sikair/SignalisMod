@@ -196,17 +196,19 @@ eusan_nation_personRelationChecker FAVORABLE","SetOptionColor officeryeongNeural
 OFFICER_YEONG_NEURALREPOSITORY_BRIEFING0,DialogOptionSelected,"$option == officeryeongNeuralRepStart","SetTextHighlights ""Eusan Nation""
 ShowImageVisual neural_repo_briefing","She swiftly scans her computer screen. ""There has been some departmental infighting recently, and we may have a use for an external mercenary like yourself.""","officeryeongNeuralRepBriefing0:Continue",
 OFFICER_YEONG_NEURALREPOSITORY_BRIEFING1,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing0","SetTextHighlights ""Central Neural Archive"" ""Ariane Yeong"" ""Officer Yeong"" ""Vineta""
-","""The name is Ariane Yeong"" she says, sliding a rather thin looking folder to you. The cover is littered with redactions and white-out, making a mess of the important text.
+ShowImageVisual neural_repo_briefing2","""The name is Ariane Yeong"" she says, sliding a rather thin looking folder to you. The cover is littered with redactions and white-out, making a mess of the important text.
 
 The inside is more accommodating to read, and contains several photos of a large building from various angles, or at least what's left of it; charred and twisted metal remains curve out of its split open husk at awkward angles.
 
 ""What you're looking at is the Central Neural Archive on Vineta""","officeryeongNeuralRepBriefing1:Continue",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING2,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing1","SetTextHighlights ""Central Neural Archive"" ""AEON"" ""Empire""","""Or at least what remains of it,"" she continues. ""During the war with the Empire, the building was hit in a nuclear bombing run. Much of the important data was destroyed, but not all.""
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING2,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing1","SetTextHighlights ""Central Neural Archive"" ""AEON"" ""Empire""
+ShowImageVisual neural_repo_briefing2","""Or at least what remains of it,"" she continues. ""During the war with the Empire, the building was hit in a nuclear bombing run. Much of the important data was destroyed, but not all.""
 
 She flips a page in the documentation to an infographic of sorts, parts hastily crossed out and circled.
 
 ""AEON is reluctant to hand it over, so an agent was sent to acquire it. We need someone to retrieve the data from him.""","officeryeongNeuralRepBriefing2:""And how would I go about that?""",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING3,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing2","SetTextHighlights ""Vineta"" ""Heimat""","""Send him a coded message upon arriving at Vineta. Once you set up initial communications, meet with him directly and retrieve the data from him. Fly back to Heimat."" She swipes at a strange Tri-Pad adjacent bootleg, sending your fleet the codes and other information.","officeryeongNeuralRepBriefing3:""And my payment?""",
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING3,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing2","SetTextHighlights ""Vineta"" ""Heimat""
+ShowPersonVisual","""Send him a coded message upon arriving at Vineta. Once you set up initial communications, meet with him directly and retrieve the data from him. Fly back to Heimat."" She swipes at a strange Tri-Pad adjacent bootleg, sending your fleet the codes and other information.","officeryeongNeuralRepBriefing3:""And my payment?""",
 OFFICER_YEONG_NEURALREPOSITORY_BRIEFING4,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing3","SetTextHighlights","""You get paid the standard rate according to regulations."" Ariane dryly responds.
 
 She hands you an envelope before you leave. ""A paper copy of the code phrase. All the less sensitive information has been uploaded to your fleet.""","officeryeongNeuralRepBriefing4:""Got it."" 
@@ -2264,17 +2266,32 @@ $tradeMode != NONE
 $player.hasDoneImpCigsEncounter == false
 $global.daysSinceStart > 10
 ","SetOptionColor imperialCigsEcounterStart highlight",,"imperialCigsEcounterStart:Check out the commotion at the cargo docks.",
-IMPERIAL_CIGS_ENCOUNTER1,DialogOptionSelected,"$option == imperialCigsEcounterStart","BeginConversation POST:portmaster","""Test1""","imperialCigsEcounter1:Continue",
-IMPERIAL_CIGS_ENCOUNTER2,DialogOptionSelected,"$option == imperialCigsEcounter1",,"""Test2""","imperialCigsEcounter2:Continue",
-IMPERIAL_CIGS_ENCOUNTER3,DialogOptionSelected,"$option == imperialCigsEcounter2",,"""Test3""","imperialCigsEcounter3a:""Let me think about it...""
+IMPERIAL_CIGS_ENCOUNTER1,DialogOptionSelected,"$option == imperialCigsEcounterStart","BeginConversation POST:portmaster","At the cargo docks, a group of people are clustered around a series of cargo containers. It seems like there is a heated argument over something. 
+
+As you get closer, you can see the $post with a few Replikas and dockyard workers arguing over the contents of a certain cargo container. The $post throws their hands up in frustration and $heOrShe begins to turn around, shaking their head. Then $heOrShe spots you and they beckon you to come over. 
+
+""Oh you. A spacer from outside the Nation. Maybe you can help me deal with this issue.""","imperialCigsEcounter1:""Help?""",
+IMPERIAL_CIGS_ENCOUNTER2,DialogOptionSelected,"$option == imperialCigsEcounter1",,"""We have a cargo container full of materials that these Replikas have marked illegal to sell by citizens of the Nation. However, due to the wierd nature of the current rules, there isn't anything that prevents non-citizens of the Nation from scooping them up and selling them on the general market.""
+
+The $post balls $hisOrHer fists then opens it again. Clearly frustrated. 
+
+""Its 1000 standard units of cigarettes. However the illegal nature is that they have the Imperial era label. They found a warehouse full of these cigarettes, well stored and sealed. So far, most of the inventory has been shipped off the planet to private buyers.""","imperialCigsEcounter2:Continue",
+IMPERIAL_CIGS_ENCOUNTER3,DialogOptionSelected,"$option == imperialCigsEcounter2",,"""Which leaves us to this particular container. The paperwork got messed up and the Replika's from the Protektors office are being unusually strict. Unless new paperwork comes in or someone who isn't a citizen, its going to sit here collecting dust or get trashed.""
+
+$post sighs and throws their hands up.
+
+""So you want this pile of cigarettes?""","imperialCigsEcounter3a:""Let me think about it...""
 imperialCigsEcounter3b:""Why not...let me get the stack.""",
-IMPERIAL_CIGS_ENCOUNTER4a,DialogOptionSelected,"$option == imperialCigsEcounter3a","FireAll PopulateImperialCigEncounter","""Test4a""",,
+IMPERIAL_CIGS_ENCOUNTER4a,DialogOptionSelected,"$option == imperialCigsEcounter3a",,"You answer that you will think about it. Taking such a huge number of cigarettes is not a trivial thing.
+
+""Sure...take your time and let me deal with the Repilkas sure..."" $heOrShe responds sarcastically.","imperialCigsEcounter4:End conversation",
 IMPERIAL_CIGS_ENCOUNTER4b,DialogOptionSelected,"$option == imperialCigsEcounter3b","$player.hasDoneImpCigsEncounter = true
 AddRemoveCommodity eusan_nation_nationsmokes 1000 true
-FireAll PopulateImperialCigEncounter","""Test4b""",,
-IMPERIAL_CIGS_ENCOUNTER_ESCAPE_RETURN,DialogOptionSelected,"$option == imperialCigsEcounterEnd","ShowDefaultVisual
-EndConversation",,,
-IMPERIAL_CIGS_ENCOUNTER_ESCAPE_OPTION,PopulateImperialCigEncounter,,"SetShortcut imperialCigsEcounterEnd ""ESCAPE""","""You thank the Portmaster and begin to head for the exit.""","imperialCigsEcounterEnd:Exit the Cargo docks.",
+","""Test4b""","imperialCigsEcounter4:End conversation",
+IMPERIAL_CIGS_ENCOUNTER_ESCAPE_RETURN,DialogOptionSelected,"$option == imperialCigsEcounter4","ShowDefaultVisual
+EndConversation
+FireAll PopulateImperialCigEncounter",,,
+IMPERIAL_CIGS_ENCOUNTER_ESCAPE_OPTION,PopulateImperialCigEncounter,,"SetShortcut imperialCigsEcounterEnd ""ESCAPE""","""You thank the $post and begin to head for the exit.""","imperialCigsEcounterEnd:Exit the Cargo docks.",
 "#END IMPERIAL_CIGS_ENCOUNTER",,,,,,
 "#END SPECIALS",,,,,,
 
