@@ -2287,10 +2287,10 @@ IMPERIAL_CIGS_ENCOUNTER4a,DialogOptionSelected,"$option == imperialCigsEcounter3
 ""Sure...take your time and let me deal with the Repilkas sure..."" $heOrShe responds sarcastically.","imperialCigsEcounter4:End conversation",
 IMPERIAL_CIGS_ENCOUNTER4b,DialogOptionSelected,"$option == imperialCigsEcounter3b","$player.hasDoneImpCigsEncounter = true
 AddRemoveCommodity eusan_nation_nationsmokes 1000 true
-","""Test4b""","imperialCigsEcounter4:End conversation",
-IMPERIAL_CIGS_ENCOUNTER_ESCAPE_RETURN,DialogOptionSelected,"$option == imperialCigsEcounter4","ShowDefaultVisual
+FireAll PopulateImperialCigEncounter","""Test4b""",,
+IMPERIAL_CIGS_ENCOUNTER_ESCAPE_RETURN,DialogOptionSelected,"$option == imperialCigsEcounterEnd","ShowDefaultVisual
 EndConversation
-FireAll PopulateImperialCigEncounter",,,
+FireAll PopulateOptions",,,
 IMPERIAL_CIGS_ENCOUNTER_ESCAPE_OPTION,PopulateImperialCigEncounter,,"SetShortcut imperialCigsEcounterEnd ""ESCAPE""","""You thank the $post and begin to head for the exit.""","imperialCigsEcounterEnd:Exit the Cargo docks.",
 "#END IMPERIAL_CIGS_ENCOUNTER",,,,,,
 "#END SPECIALS",,,,,,
