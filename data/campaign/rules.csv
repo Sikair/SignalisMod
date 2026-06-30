@@ -303,7 +303,8 @@ OFFICER_YEONG_PENROSERECOVERY1_BRIEFING1,DialogOptionSelected,"$option == office
 
 ","officeryeongPenroseRecovery1Briefing1:Continue",
 OFFICER_YEONG_PENROSERECOVERY1_BRIEFING2,DialogOptionSelected,"$option == officeryeongPenroseRecovery1Briefing1","SetTextHighlights ""PENROSE-419"" ""LSTR-419"" ""Penrose"" ""Cameron Yang""
-Call $global.eusan_nation_penroseRecovery1_ref updateData","Its not Domain standard, but its recognizable in its purpose. A distress signal.
+Call $global.eusan_nation_penroseRecovery1_ref updateData
+ShowImageVisual 419_briefing","Its not Domain standard, but its recognizable in its purpose. A distress signal.
 
 ""The transmission is from the PENROSE-419. It was launched over two decades ago. The Flight Officer's name was Cameron Yang. The replika was a standard LSTR unit, LSTR-419. The last time they replied to our hails was 12 years ago. There were a few attempts to reestablish contact, but given 419's mission was essentially over, the Nation did not bother outside the standard hails.""
 
@@ -422,7 +423,8 @@ OFFICER_YEONG_PENROSERECOVERY2_BRIEFING1,DialogOptionSelected,"$option == office
 
 ""However, there is a slight issue. There seems to be a fleet of some kind in the system, a Tri-Tachyon patrol if scavengers are to be believed. Why they're there is anyone's guess. All we know is they are patrolling the location, nothing on the forces size or composition. It could be a Wolf or three Paragons.""","officeryeongPenroseRecovery2_briefing1:""Hostile fleet, no information on size or composition. Got it.""",
 OFFICER_YEONG_PENROSERECOVERY2_BRIEFING2,DialogOptionSelected,"$option ==  officeryeongPenroseRecovery2_briefing1","SetTextHighlights ""PENROSE-388"" ""Mary Cheng""
-Call $global.eusan_nation_penroseRecovery2_ref updateData","""As for your mission target:PENROSE-388. This Penrose was launched over two decades ago. I want to make it clear to you:your orders are to destroy the fleet near it. You need to do this before you recover PENROSE-388.""
+Call $global.eusan_nation_penroseRecovery2_ref updateData
+ShowImageVisual 388_briefing","""As for your mission target:PENROSE-388. This Penrose was launched over two decades ago. I want to make it clear to you:your orders are to destroy the fleet near it. You need to do this before you recover PENROSE-388.""
 
 ""PENROSE-388 dropped out of contact eighteen years ago. Commanded by a young pilot named Mary Cheng. Well connected. Has ties to a powerful political faction here on Heimat. She's important, and, my superiors have prioritized the recovery of PENROSE-388 above all other similar operations.""","officeryeongPenroseRecovery2_briefing2:""I understand""",
 OFFICER_YEONG_PENROSERECOVERY2_BRIEFING3,DialogOptionSelected,"$option == officeryeongPenroseRecovery2_briefing2","SetTextHighlights $eusan_nation_penroseRecovery2_distanceLy $eusan_nation_penroseRecovery2_systemName $eusan_nation_penroseRecovery2_planetName
