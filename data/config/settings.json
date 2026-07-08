@@ -75,7 +75,8 @@
             "trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
 			"eusan_nation_lerche_heat":"graphics/ships/fx/eusan_nation_lerche_heat.png",
 			"eusan_nation_station_glow_left":"graphics/ships/fx/eusan_nation_station_missile_l_glow.png",
-			"eusan_nation_station_glow_right":"graphics/ships/fx/eusan_nation_station_missile_r_glow.png"
+			"eusan_nation_station_glow_right":"graphics/ships/fx/eusan_nation_station_missile_r_glow.png",
+            "eusan_nation_bioresonance_aura": "graphics/ships/fx/eusan_nation_bioresonance_aura.png"
         }
     }
 }
