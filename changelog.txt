@@ -4,6 +4,7 @@ v0.1.5a
 - Adding a certain encounter regarding a type of cigarettes.
 - Adding Rotfront surface texture and hablight texture.
 - Adding neuro repo mission illustration, 2nd briefing illustration, and associated rules.csv refractor.
+- Added Bioresonance hullmod.
 
 v0.1.4g
 - Fixing Issues with rules.csv regarding entry to 512 mission with more clear instructions and flags.
