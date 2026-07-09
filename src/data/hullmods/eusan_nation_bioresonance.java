@@ -141,8 +141,8 @@ public class eusan_nation_bioresonance extends BaseHullMod {
 
         tooltip.addSectionHeading("Technical System Details", Alignment.MID, pad);
         final TooltipMakerAPI text = tooltip.beginImageWithText("graphics/icons/tactical/cr_tactical3.png", 40f);
-        text.addPara("Neuro Resonance", 0f, Global.getSettings().getColor("tooltipTitleAndLightHighlightColor"), "Neuro Resonance");
-        text.addPara("A Neuro-Resonator that activates during combat, it provides varying buffs to nearby friendly units within 3000su, the type of buff depends on the ship's captain personality.",
+        text.addPara("Bio-Resonance", 0f, Global.getSettings().getColor("tooltipTitleAndLightHighlightColor"), "Neuro Resonance");
+        text.addPara("A Bio-Resonator system that activates during combat, it provides varying buffs to nearby friendly units within 3000su, the type of buff depends on the ship's captain personality.",
                 0f, Misc.getHighlightColor(),
                 new String[] {"3000su",
                         "personality"});
