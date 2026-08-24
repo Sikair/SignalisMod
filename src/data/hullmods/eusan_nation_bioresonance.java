@@ -2,10 +2,7 @@ package data.hullmods;
 
 import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BaseHullMod;
-import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -14,6 +11,8 @@ import com.fs.starfarer.api.util.Misc;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
+import data.scripts.weapons.eusan_nation_rotmilan_wings;
 import org.magiclib.util.MagicRender;
 import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
@@ -37,10 +36,50 @@ public class eusan_nation_bioresonance extends BaseHullMod {
     public static final Color JITTER_COLOR_AGGRESSIVE = new Color(208, 7, 231, 175);
     public static final Color JITTER_COLOR_RECKLESS = new Color(241, 72, 50, 175);
 
+    private static final String FLAG = "eusan_nation_wings_added";
+
     public eusan_nation_bioresonance() {
         this.ID = "eusan_nation_bioresonance";
         this.STATUSKEY1 = new Object();
         this.buffed = new ArrayList<>();
+    }
+
+    // Wing visual on sprite, should be moved
+    public void applyEffectsAfterShipCreation(ShipAPI ship, String id){
+       if(ship == null) return;
+       if(!ship.getCustomData().containsKey(FLAG)){
+           ship.setCustomData(FLAG, true);
+           Global.getCombatEngine().addPlugin(new eusan_nation_rotmilan_wings(ship));
+
+           for(WeaponAPI w : ship.getAllWeapons()){
+               if(w.getSlot().isDecorative()){
+                   if(w.getSlot().getId().endsWith("WING0")){
+                       w.getAnimation().setFrame(0);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING1")){
+                       w.getAnimation().setFrame(1);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING2")){
+                       w.getAnimation().setFrame(2);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING3")){
+                       w.getAnimation().setFrame(3);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING4")){
+                       w.getAnimation().setFrame(4);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING5")){
+                       w.getAnimation().setFrame(5);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING6")){
+                       w.getAnimation().setFrame(6);
+                   } else
+                   if(w.getSlot().getId().endsWith("WING7")){
+                       w.getAnimation().setFrame(7);
+                   }
+               }
+           }
+       }
     }
 
     @Override
