@@ -28,7 +28,7 @@ $faction.id == eusan_nation",,"Your name is known to some mid-level positions of
 relLevelFriendlySigNation,RelationshipLevelDesc,"$faction.rel == FRIENDLY
 $faction.id == eusan_nation",,"You are relatively well-known within $theFaction, whether in person or by reputation. Low level officials will sometimes try to lavish you with gifts so they can win your favor and hopefully help their careers by putting in a good word to their superiors.",,
 relLevelCooperativeSigNation,RelationshipLevelDesc,"$faction.rel == COOPERATIVE
-$faction.id == eusan_nation",,"You know some of the $faction leaders on a personal level. You will receive trade concessions, high-quality ships, and munitions. Your tales and aid are legendary, and your influence and connections are nigh limitless within the $faction.",,
+$faction.id == eusan_nation",,"You know some of the $faction leaders on a personal level. You will receive trade concessions, high-quality ships, and munitions. Your tales and aid are legendary, and your influence and connections are nigh limitless within $theFaction.",,
 relLevelSuspiciousSigNation,RelationshipLevelDesc,"$faction.rel == SUSPICIOUS
 $faction.id == eusan_nation",,"$faction officials tend to view you with suspicion. Access to the port authority is granted only grudgingly, and you find yourself the subject of frequent investigations and harassment by Replika security units.",,
 relLevelInhospitableSigNation,RelationshipLevelDesc,"$faction.rel == INHOSPITABLE
@@ -36,7 +36,7 @@ $faction.id == eusan_nation",,"No shoot-on-sight orders have been given but @fac
 relLevelHostileSigNation,RelationshipLevelDesc,"$faction.rel == HOSTILE
 $faction.id == eusan_nation",,"Your name is known to officials as a menace to society and top enemy of the people. $Faction commanders have authorization to engage your fleet on sight. However, there may still be a way for you to sneak into their markets to do some black-market trading. You might still recover good standing with $theFaction, but it's going to take some serious work or bribery to do so.",,
 relLevelVengefulSigNation,RelationshipLevelDesc,"$faction.rel == VENGEFUL
-$faction.id == eusan_nation",,"A holo of your face and an IDENT-hash of your last known fleet position are both regular parts of security bulletins issued by Protektor forces. It's fairly certain there's a high-ranking $faction officer sent by top levels of the $theFaction whose primary assignment is to hunt you down. For them, you are enemy number one, a scourge and something to be hated and destroyed.",,
+$faction.id == eusan_nation",,"A holo of your face and an IDENT-hash of your last known fleet position are both regular parts of security bulletins issued by Protektor forces. It's fairly certain there's a high-ranking $faction officer sent by top levels of $theFaction whose primary assignment is to hunt you down. For them, you are enemy number one, a scourge and something to be hated and destroyed.",,
 "#END RULESET_RELATIONSHIP_LEVEL_DESC_START",,,,,,
 ,,,,,,
 # RULESET_BAR_DESCRIPTION_START,,,,,,
@@ -151,7 +151,8 @@ OFFICER_YEONG_GREETING_NEUTRAL_COMMISSIONED,PickGreeting,"$player.commissionFact
 $faction.id == ""eusan_nation""
 $id == ""eusan_nation_officer_yeong"" score: 100
 $player.metOfficerYeong == true
-$faction.neutralToPlayer score:100",,"""Mmm. Your back. What do you need?""
+$faction.neutralToPlayer score:100","ShowPersonVisual
+FireAll PopulateOptions","""Mmm. Your back. What do you need?""
 OR
 ""Hello. Remember that you need to be careful.""
 OR
@@ -164,7 +165,8 @@ OFFICER_YEONG_GREETING_NEUTRAL_NOTCOMMISSIONED,PickGreeting,"$player.commissionF
 $faction.id == ""eusan_nation""
 $id == ""eusan_nation_officer_yeong"" score: 100
 $player.metOfficerYeong == true
-$faction.neutralToPlayer score:100",,"""What do you want?""
+$faction.neutralToPlayer score:100","ShowPersonVisual
+FireAll PopulateOptions","""What do you want?""
 OR
 ""Hello...oh its you.""
 OR
@@ -174,7 +176,7 @@ OR
 OR
 ""Greetings from my dreary office, Captain $playerName.""",,
 OFFICER_YEONG_GREETING_HOSTILE,PickGreeting,"$faction.isHostile score:100
-$id == ""eusan_nation_officer_yeong"" score: 100",,"CONNECTION REFUSED
+$id == ""eusan_nation_officer_yeong"" score: 100","ShowPersonVisual","CONNECTION REFUSED
 OR
 There is no response.
 OR
@@ -191,18 +193,22 @@ $id == ""eusan_nation_officer_yeong"" score: 100
 $player.metOfficerYeong == true
 $global.officeryeong_neuralrepositorystart == false
 eusan_nation_personRelationChecker FAVORABLE","SetOptionColor officeryeongNeuralRepStart highlight",,"officeryeongNeuralRepStart:Inquire about more important jobs.",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING0,DialogOptionSelected,"$option == officeryeongNeuralRepStart","SetTextHighlights ""Eusan Nation""","She swiftly scans her computer screen. ""There has been some departmental infighting recently, and we may have a use for an external mercenary like yourself.""","officeryeongNeuralRepBriefing0:Continue",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING1,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing0","SetTextHighlights ""Central Neural Archive"" ""Ariane Yeong"" ""Officer Yeong"" ""Vineta""","""The name is Ariane Yeong"" she says, sliding a rather thin looking folder to you. The cover is littered with redactions and white-out, making a mess of the important text.
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING0,DialogOptionSelected,"$option == officeryeongNeuralRepStart","SetTextHighlights ""Eusan Nation""
+ShowImageVisual neural_repo_briefing","She swiftly scans her computer screen. ""There has been some departmental infighting recently, and we may have a use for an external mercenary like yourself.""","officeryeongNeuralRepBriefing0:Continue",
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING1,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing0","SetTextHighlights ""Central Neural Archive"" ""Ariane Yeong"" ""Officer Yeong"" ""Vineta""
+ShowImageVisual neural_repo_briefing2","""The name is Ariane Yeong"" she says, sliding a rather thin looking folder to you. The cover is littered with redactions and white-out, making a mess of the important text.
 
 The inside is more accommodating to read, and contains several photos of a large building from various angles, or at least what's left of it; charred and twisted metal remains curve out of its split open husk at awkward angles.
 
 ""What you're looking at is the Central Neural Archive on Vineta""","officeryeongNeuralRepBriefing1:Continue",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING2,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing1","SetTextHighlights ""Central Neural Archive"" ""AEON"" ""Empire""","""Or at least what remains of it,"" she continues. ""During the war with the Empire, the building was hit in a nuclear bombing run. Much of the important data was destroyed, but not all.""
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING2,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing1","SetTextHighlights ""Central Neural Archive"" ""AEON"" ""Empire""
+ShowImageVisual neural_repo_briefing2","""Or at least what remains of it,"" she continues. ""During the war with the Empire, the building was hit in a nuclear bombing run. Much of the important data was destroyed, but not all.""
 
 She flips a page in the documentation to an infographic of sorts, parts hastily crossed out and circled.
 
 ""AEON is reluctant to hand it over, so an agent was sent to acquire it. We need someone to retrieve the data from him.""","officeryeongNeuralRepBriefing2:""And how would I go about that?""",
-OFFICER_YEONG_NEURALREPOSITORY_BRIEFING3,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing2","SetTextHighlights ""Vineta"" ""Heimat""","""Send him a coded message upon arriving at Vineta. Once you set up initial communications, meet with him directly and retrieve the data from him. Fly back to Heimat."" She swipes at a strange Tri-Pad adjacent bootleg, sending your fleet the codes and other information.","officeryeongNeuralRepBriefing3:""And my payment?""",
+OFFICER_YEONG_NEURALREPOSITORY_BRIEFING3,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing2","SetTextHighlights ""Vineta"" ""Heimat""
+ShowPersonVisual","""Send him a coded message upon arriving at Vineta. Once you set up initial communications, meet with him directly and retrieve the data from him. Fly back to Heimat."" She swipes at a strange Tri-Pad adjacent bootleg, sending your fleet the codes and other information.","officeryeongNeuralRepBriefing3:""And my payment?""",
 OFFICER_YEONG_NEURALREPOSITORY_BRIEFING4,DialogOptionSelected,"$option == officeryeongNeuralRepBriefing3","SetTextHighlights","""You get paid the standard rate according to regulations."" Ariane dryly responds.
 
 She hands you an envelope before you leave. ""A paper copy of the code phrase. All the less sensitive information has been uploaded to your fleet.""","officeryeongNeuralRepBriefing4:""Got it."" 
@@ -221,30 +227,29 @@ FireAll PopulateOptions","""Good. Now the fun begins. For accepting this mission
 # MEETING_AGENT,,,,,,
 OFFICER_YEONG_NEURALREPOSITORY_AGENT_GREETING,PickGreeting,"$id == ""eusan_nation_special_agent"" score: 100
 $global.officeryeong_neuralrepositorystart == true
-$global.eusan_nation_neuralrepo_completed == false","ShowPersonVisual
-FireAll PopulateAgentOptions
+$global.eusan_nation_neuralrepo_completed == false","FireAll PopulateAgentOptions
 SetTextHighlights ""Recovery Area 5. North Supply depot. Section 11.""","You take a shuttle down to the planet. Flipping through the channels, your comms officer locates the frequency and begins to broadcast the coded signal at the specified time. 
 
 After a few seconds, the line crackles with a response. The comms officer quickly decodes the message and hands you the result.
 
-""Recovery Area 5. North Supply depot. Section 11.""
+""Recovery Area 5. North Supply depot. Section 11.""",,
+OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK1,PopulateAgentOptions,,"ShowPersonVisual",,"officeryeongNeuralRepAgentTalk1:Continue",
+OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK2,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk1","ShowImageVisual neural_repo_ruins","The transmission leads you to an area by a large crater, no doubt the remains of the neural repository. The facility was once used to store and manufacture the neural patterns used by replikas. Now, it is little more than a scar in the ground, surrounded by temporary buildings set up in the vicinity of the impressive scene of destruction.
 
-The transmission leads you to an area by a large crater, no doubt the remains of the neural repository. The facility was once used to store and manufacture the neural patterns used by replikas. Now, it is little more than a scar in the ground, surrounded by temporary buildings set up in the vicinity of the impressive scene of destruction.
-
-As you arrive at the meeting spot, you come across a man busy sorting supplies and miscellaneous equipment.",,
-OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK1,PopulateAgentOptions,,"ShowPersonVisual",,"officeryeongNeuralRepAgentTalk1:Use the code phrase",
-OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK2,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk1
-","SetTextHighlights ""I got a package to deliver, but the address is in Carcosa."" ""I am not sure how I can help, but I will try.""","I got a package to deliver, but the address is in Carcosa.
+As you arrive at the meeting spot, you come across a man busy sorting supplies and miscellaneous equipment.","officeryeongNeuralRepAgentTalk2:Use the code phrase",
+OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK3,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk2
+","ShowPersonVisual
+SetTextHighlights ""I got a package to deliver, but the address is in Carcosa."" ""I am not sure how I can help, but I will try.""","I got a package to deliver, but the address is in Carcosa.
 
 ""I am not sure how I can help, but I will try."" the man replies. He sizes you up before deciding you are worth trusting.
 
-""You three characters here for the data, right?"" the man asks rhetorically. He rips open a spot on his jacket and slides a disk out of it. ""You aren't officially affiliated with us, so don't worry about being courteous with AEON. Don't expect them to be courteous to you either, though. You should leave.""","officeryeongNeuralRepAgentTalk2:Exit the area",
-OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK3,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk2","$global.eusan_nation_neuralrepo_returnInfo = true
+""You three characters here for the data, right?"" the man asks rhetorically. He rips open a spot on his jacket and slides a disk out of it. ""You aren't officially affiliated with us, so don't worry about being courteous with AEON. Don't expect them to be courteous to you either, though. You should leave.""","officeryeongNeuralRepAgentTalk3:Exit the area",
+OFFICER_YEONG_NEURALREPOSITORY_AGENT_TALK4,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk3","$global.eusan_nation_neuralrepo_returnInfo = true
 $global.officeryeong_neuralrepositoryMetAgent = true
 Call $global.eusan_nation_neuralrepo_ref updateStage","Taking the box of data disks from the agent was easy enough. Although no problems were encountered, you cant shake a sense of unease in the back of your mind. Why would the Nation go through this trouble to get this data? And why would AEON put up so many obstacles?
 
-You quash the thought. If its that important, you'll know soon enough. Your shuttle gently lofts into the skies after you board it, the shimmering seas of Vineta fading into the distance.","officeryeongNeuralRepAgentTalk3:Return to the ship",
-OFFICER_YEONG_NEURALREPOSITORY_AGENT_ESCAPE_RETURN,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk3","FireAll PopulateOptions","Your journey back to your flagship is uneventful, the disk secured in your hand.
+You quash the thought. If its that important, you'll know soon enough. Your shuttle gently lofts into the skies after you board it, the shimmering seas of Vineta fading into the distance.","officeryeongNeuralRepAgentTalk4:Return to the ship.",
+OFFICER_YEONG_NEURALREPOSITORY_AGENT_ESCAPE_RETURN,DialogOptionSelected,"$option == officeryeongNeuralRepAgentTalk4","FireAll PopulateOptions","Your journey back to your flagship is uneventful, the disk secured in your hand.
 ",,
 "#END MEETING_AGENT",,,,,,
 ,,,,,,
@@ -298,7 +303,8 @@ OFFICER_YEONG_PENROSERECOVERY1_BRIEFING1,DialogOptionSelected,"$option == office
 
 ","officeryeongPenroseRecovery1Briefing1:Continue",
 OFFICER_YEONG_PENROSERECOVERY1_BRIEFING2,DialogOptionSelected,"$option == officeryeongPenroseRecovery1Briefing1","SetTextHighlights ""PENROSE-419"" ""LSTR-419"" ""Penrose"" ""Cameron Yang""
-Call $global.eusan_nation_penroseRecovery1_ref updateData","Its not Domain standard, but its recognizable in its purpose. A distress signal.
+Call $global.eusan_nation_penroseRecovery1_ref updateData
+ShowImageVisual 419_briefing","Its not Domain standard, but its recognizable in its purpose. A distress signal.
 
 ""The transmission is from the PENROSE-419. It was launched over two decades ago. The Flight Officer's name was Cameron Yang. The replika was a standard LSTR unit, LSTR-419. The last time they replied to our hails was 12 years ago. There were a few attempts to reestablish contact, but given 419's mission was essentially over, the Nation did not bother outside the standard hails.""
 
@@ -417,7 +423,8 @@ OFFICER_YEONG_PENROSERECOVERY2_BRIEFING1,DialogOptionSelected,"$option == office
 
 ""However, there is a slight issue. There seems to be a fleet of some kind in the system, a Tri-Tachyon patrol if scavengers are to be believed. Why they're there is anyone's guess. All we know is they are patrolling the location, nothing on the forces size or composition. It could be a Wolf or three Paragons.""","officeryeongPenroseRecovery2_briefing1:""Hostile fleet, no information on size or composition. Got it.""",
 OFFICER_YEONG_PENROSERECOVERY2_BRIEFING2,DialogOptionSelected,"$option ==  officeryeongPenroseRecovery2_briefing1","SetTextHighlights ""PENROSE-388"" ""Mary Cheng""
-Call $global.eusan_nation_penroseRecovery2_ref updateData","""As for your mission target:PENROSE-388. This Penrose was launched over two decades ago. I want to make it clear to you:your orders are to destroy the fleet near it. You need to do this before you recover PENROSE-388.""
+Call $global.eusan_nation_penroseRecovery2_ref updateData
+ShowImageVisual 388_briefing","""As for your mission target:PENROSE-388. This Penrose was launched over two decades ago. I want to make it clear to you:your orders are to destroy the fleet near it. You need to do this before you recover PENROSE-388.""
 
 ""PENROSE-388 dropped out of contact eighteen years ago. Commanded by a young pilot named Mary Cheng. Well connected. Has ties to a powerful political faction here on Heimat. She's important, and, my superiors have prioritized the recovery of PENROSE-388 above all other similar operations.""","officeryeongPenroseRecovery2_briefing2:""I understand""",
 OFFICER_YEONG_PENROSERECOVERY2_BRIEFING3,DialogOptionSelected,"$option == officeryeongPenroseRecovery2_briefing2","SetTextHighlights $eusan_nation_penroseRecovery2_distanceLy $eusan_nation_penroseRecovery2_systemName $eusan_nation_penroseRecovery2_planetName
@@ -476,7 +483,7 @@ Call $global.eusan_nation_penroseRecovery2_ref updateStage","Your team stabilize
 
 She is largely incoherent, but through tears manages to get out a few sentences. ""Thank you so much, I knew they would send someone. The Nation wouldn't abandon me, but it was so long..."" She tries to shake your hand before she loses her composure completely, but the medics have already dragged her off for treatment.
 
-You recieve a report on her a few hours later: she is in bad shape, but she will make it. She has also requested to join your fleet, to which you give a noncommittal answer.","officeryeongPenroseRecovery2Option5:Lets go home..",
+You recieve a report on her a few hours later: she is in bad shape, but she will make it. She has also requested to join your fleet, to which you give a noncommittal answer.","officeryeongPenroseRecovery2Option5:""Lets go home...""",
 OFFICER_YEONG_PENROSERECOVERY2_PLANET_ESCAPE_RETURN,DialogOptionSelected,"$option == officeryeongPenroseRecovery2Option5","FireAll PopulateOptions",,,
 "#END RECOVERY2",,,,,,
 ,,,,,,
@@ -528,15 +535,39 @@ You give her a nod and pull out a communications device. You send off a message 
 # OFFICER_YEONG_PENROSE512_QUEST,,,,,,
 ,,,,,,
 # RECOVERY512_BRIEFING,,,,,,
-OFFICER_YEONG_PENROSE512_START_NOTCOMMD,PopulateOfficerYeongChatOptions,"$player.commissionFactionId != ""eusan_nation""
+OFFICER_YEONG_PENROSE512_START_NOTCOMMD1,PopulateOfficerYeongChatOptions,"$player.commissionFactionId != ""eusan_nation""
 $id == ""eusan_nation_officer_yeong"" score: 100
 $player.metOfficerYeong == true
 $player.metAdmiralFalke == true
 $global.eusan_nation_penroseRecovery2_completed == true
-$global.eusan_nation_penrose512_start == false
-eusan_nation_personRelationChecker COOPERATIVE","SetEnabled officeryeongPenroseRecovery512Start false
+$global.eusan_nation_penrose512_start == false","SetEnabled officeryeongPenroseRecovery512Start false
+SetOptionColor officeryeongPenroseRecovery512Start highlight
+SetTooltip officeryeongPenroseRecovery512Start ""You must be commissioned and Cooperative relations with the Eusan Nation.""",,"officeryeongPenroseRecovery512Start:""I have a new mission, you were specifically requested.""",
+OFFICER_YEONG_PENROSE512_START_NOTCOMMD2,PopulateOfficerYeongChatOptions,"$player.commissionFactionId != ""eusan_nation""
+$id == ""eusan_nation_officer_yeong"" score: 100
+$player.metOfficerYeong == true
+$player.metAdmiralFalke == false
+$global.eusan_nation_penroseRecovery2_completed == true
+$global.eusan_nation_penrose512_start == false","SetEnabled officeryeongPenroseRecovery512Start false
 SetOptionColor officeryeongPenroseRecovery512Start highlight
 SetTooltip officeryeongPenroseRecovery512Start ""You must be commissioned and Cooperative relations with the Eusan Nation and have met Admiral Falke to start this mission.""",,"officeryeongPenroseRecovery512Start:""I have a new mission, you were specifically requested.""",
+OFFICER_YEONG_PENROSE512_START_NOTMETFALKE,PopulateOfficerYeongChatOptions,"$player.commissionFactionId == ""eusan_nation""
+$id == ""eusan_nation_officer_yeong"" score: 100
+$player.metOfficerYeong == true
+$player.metAdmiralFalke == false
+$global.eusan_nation_penroseRecovery2_completed == true
+$global.eusan_nation_penrose512_start == false","SetEnabled officeryeongPenroseRecovery512Start false
+SetOptionColor officeryeongPenroseRecovery512Start highlight
+SetTooltip officeryeongPenroseRecovery512Start ""You must have Cooperative relations with the Eusan Nation and have met Admiral Falke to start this mission.""",,"officeryeongPenroseRecovery512Start:""I have a new mission, you were specifically requested.""",
+OFFICER_YEONG_PENROSE512_START_REPLEVELS,PopulateOfficerYeongChatOptions,"$player.commissionFactionId == ""eusan_nation""
+RepLTE ""eusan_nation"" FRIENDLY
+$id == ""eusan_nation_officer_yeong"" score: 100
+$player.metOfficerYeong == true
+$player.metAdmiralFalke == true
+$global.eusan_nation_penroseRecovery2_completed == true
+$global.eusan_nation_penrose512_start == false","SetEnabled officeryeongPenroseRecovery512Start false
+SetOptionColor officeryeongPenroseRecovery512Start highlight
+SetTooltip officeryeongPenroseRecovery512Start ""You must have Cooperative relations with the Eusan Nation to start this mission.""",,"officeryeongPenroseRecovery512Start:""I have a new mission, you were specifically requested.""",
 OFFICER_YEONG_PENROSE512_START,PopulateOfficerYeongChatOptions,"$player.commissionFactionId == ""eusan_nation""
 RepGTE ""eusan_nation"" COOPERATIVE
 $id == ""eusan_nation_officer_yeong"" score: 100
@@ -724,10 +755,6 @@ OFFICER_YEONG_PENROSE512_FORWARD_DECKS_EXIT,DialogOptionSelected,"$option == off
 # OFFICER_YEONG_PENROSE512_MIDDLE_SECTION,,,,,,
 OFFICER_YEONG_PENROSE512_MIDDLE_SECTION_START,PopulateOfficerYeongPenrose512Explore,,,,"officeryeongPenrose512_middleDecks_start:Enter the Middle decks",
 OFFICER_YEONG_PENROSE512_MIDDLE_SECTION1,DialogOptionSelected,"$option == officeryeongPenrose512_middleDecks_start","FireAll PopulateOfficerYeongPenrose512MiddleSectionExplore","You enter the mid section of the ship, navigating around busy salvors and their equipment as they strip and inspect the ship. A medic leans against a nearby wall, their fortunately unused equipment piled nearby.",,
-#OFFICER_YEONG_PENROSE512_MIDDLE_SECTION2a,PopulateOfficerYeongPenrose512MiddleSectionExplore,,,,"officeryeongPenrose512_middleDecks_explore2a:View Map","Player finds a diagram of the ship"
-#OFFICER_YEONG_PENROSE512_MIDDLE_SECTION2a_VIEWMAP,DialogOptionSelected,"$option == officeryeongPenrose512_middleDecks_explore2a",,"You were provided with detailed schematics of the vessel, further enhanced by your experience in salvaging the previous two. You bring them up on your tri-pad, observing the layout with the physical map your team salvaged from the area.","officeryeongPenrose512_middleDecks_explore2a_viewmap:Go back to the main hall.",
-#OFFICER_YEONG_PENROSE512_MIDDLE_SECTION2a_EXIT,DialogOptionSelected,"$option == officeryeongPenrose512_middleDecks_explore2a_viewmap
-","FireAll PopulateOfficerYeongPenrose512MiddleSectionExplore","You finish looking at the map and ship plans.",,
 OFFICER_YEONG_PENROSE512_MIDDLE_SECTION2b,PopulateOfficerYeongPenrose512MiddleSectionExplore,,,,"officeryeongPenrose512_middleDecks_explore2b:Enter the Mess Hall","Player finds a dead replika and a keycard nearby."
 OFFICER_YEONG_PENROSE512_MIDDLE_SECTION2b_SYSTEMSa,DialogOptionSelected,"$option == officeryeongPenrose512_middleDecks_explore2b
 $player.officeryeongPenrose512_poweron == false","SetTextHighlights ""mess hall"" ","You step into the mess hall, though on such a small ship it served a variety of functions. Including, most importantly, a technical diagnostics area. 
@@ -776,20 +803,41 @@ OFFICER_YEONG_PENROSE512_AFT_DECKS_EXIT,DialogOptionSelected,"$option == officer
 # OFFICER_YEONG_PENROSE512_CRYO,,,,,,
 OFFICER_YEONG_PENROSE512_CRYO_STARTa,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == true
 $player.officeryeongPenrose512_poweron == true
+$player.officeryeongPenrose512_foundphoto == true
 $player.officeryeongPenrose512_locatedDistress == false","SetTooltip officeryeongPenrose512_cryo_start ""Enter the cryo bay...""
 ",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
 OFFICER_YEONG_PENROSE512_CRYO_STARTb,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == true
 $player.officeryeongPenrose512_poweron == true
-$player.officeryeongPenrose512_locatedDistress == true","SetTooltip officeryeongPenrose512_cryo_start ""Enter the cryo bay...""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
+$player.officeryeongPenrose512_locatedDistress == true
+$player.officeryeongPenrose512_foundphoto == true","SetTooltip officeryeongPenrose512_cryo_start ""Enter the cryo bay...""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
 OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDa,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == false
-$player.officeryeongPenrose512_poweron == false","SetEnabled officeryeongPenrose512_cryo_start false
+$player.officeryeongPenrose512_poweron == false
+$player.officeryeongPenrose512_foundphoto == false","SetEnabled officeryeongPenrose512_cryo_start false
 SetTooltip officeryeongPenrose512_cryo_start ""You will have to wait until the salvage crew unblocks corridor full of debris. Perhaps you should search the rest of the ship first.""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
 OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDb,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == true
-$player.officeryeongPenrose512_poweron == false","SetEnabled officeryeongPenrose512_cryo_start false
+$player.officeryeongPenrose512_poweron == false
+$player.officeryeongPenrose512_foundphoto == true","SetEnabled officeryeongPenrose512_cryo_start false
 SetTooltip officeryeongPenrose512_cryo_start ""Debris blocking the door has been cleared. Manual override to this door is wrecked but the engineering crew says the power conduits seem to be working. Perhaps try restoring power to the door to cycle it?""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
 OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDc,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == false
-$player.officeryeongPenrose512_poweron == true","SetEnabled officeryeongPenrose512_cryo_start false
+$player.officeryeongPenrose512_poweron == true
+$player.officeryeongPenrose512_foundphoto == true","SetEnabled officeryeongPenrose512_cryo_start false
 SetTooltip officeryeongPenrose512_cryo_start ""Most debris have been removed and power has been restored but there is the issue of finding the access key for the door. Try looking for an access keycard to get through the door.""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
+OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDd,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == true
+$player.officeryeongPenrose512_poweron == true
+$player.officeryeongPenrose512_foundphoto == false","SetEnabled officeryeongPenrose512_cryo_start false
+SetTooltip officeryeongPenrose512_cryo_start ""You feel like you are missing something. Perhaps you should go back to the flight deck to see if you are missing anything.""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
+OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDe,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == true
+$player.officeryeongPenrose512_poweron == false
+$player.officeryeongPenrose512_foundphoto == false","SetEnabled officeryeongPenrose512_cryo_start false
+SetTooltip officeryeongPenrose512_cryo_start ""Manual override to this door is wrecked but the engineering crew says the power conduits seem to be working. Perhaps you should restore the power and go back to the flight deck to see if you missed something.""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
+OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDf,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == false
+$player.officeryeongPenrose512_poweron == true
+$player.officeryeongPenrose512_foundphoto == true","SetEnabled officeryeongPenrose512_cryo_start false
+SetTooltip officeryeongPenrose512_cryo_start ""Most debris have been removed and power has been restored but there is the issue of finding the access key for the door. Try looking for an access keycard to get through the door.""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
+OFFICER_YEONG_PENROSE512_CRYO_START_BLOCKEDg,PopulateOfficerYeongPenrose512Explore,"$player.officeryeongPenrose512_foundKeycard == false
+$player.officeryeongPenrose512_poweron == false
+$player.officeryeongPenrose512_foundphoto == true","SetEnabled officeryeongPenrose512_cryo_start false
+SetTooltip officeryeongPenrose512_cryo_start ""Power is off but the conduits seems intact. Also the locks seem to be jammed shut. Maybe try looking for the keycard and turn the power on?""",,"officeryeongPenrose512_cryo_start:Enter the Emergency Cryo Bay",
 OFFICER_YEONG_PENROSE512_CRYO_EXPLORE1,DialogOptionSelected,"$option == officeryeongPenrose512_cryo_start",,"The door to the emergency cryo bay is firmly jammed, and has to be cut open. Occasional beeps from the machinery are the only noises in the room.","officeryeongPenrose512_cryo_explore1:Inspect the cryo chamber.",
 OFFICER_YEONG_PENROSE512_CRYO_EXPLORE2,DialogOptionSelected,"$option == officeryeongPenrose512_cryo_explore1
 $player.officeryeongPenrose512_foundphoto == true","ShowImageVisual 512_cryo1","The cryo bed itself is intact, like the one on your previous Penrose salvage mission. Could the pilot be alive in this one as well?
@@ -898,8 +946,8 @@ OFFICER_YEONG_CHAT_QUEST_GIVE_2,DialogOptionSelected,"$option == OfficerYeongQue
 
 She flips a few more pages on the clipboard and checks off a line with a pen. 
 
-""So what say you?""","OfficerYeongQuestGive2a:Accept
-OfficerYeongQuestGive2b:Reconsider",
+""So what say you?""","OfficerYeongQuestGive2b:Reconsider
+OfficerYeongQuestGive2a:Accept",
 OFFICER_YEONG_CHAT_QUEST_GIVE_END_ACCEPT,DialogOptionSelected,"$option == OfficerYeongQuestGive2a","AdjustRepActivePerson WELCOMING 5
 AddPotentialContact ""eusan_nation_officer_yeong""
 $player.askedArianeForWork = true","You accept to work for Ariane Yeong. 
@@ -1629,6 +1677,26 @@ OR
 The comm channel refuses to connect.","cutCommLink:Cut the comm link",
 "#END THE_DAUGHTER_GREETING",,,,,,
 ,,,,,,
+# THE_DAUGHTER_OPERATION1,,,,,,
+,,,,,,
+# THE_DAUGHTER_OPERATION1_BRIEFING,,,,,,
+THE_DAUGHTER_OPERATION1_START,PopulatetheDaughterChatOptions,"$id == eusan_nation_the_daughter score: 100
+$player.metDaughter == true
+$global.theDaughter_operation1_start == false
+eusan_nation_personRelationChecker FAVORABLE",,,,
+THE_DAUGHTER_OPERATION1_BRIEFING0,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING1,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING2,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING3,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING4,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING_END,DialogOptionSelected,,"FireAll PopulateOperation1Options",,,
+THE_DAUGHTER_OPERATION1_BRIEFING_RECONSIDERED_OPTION,PopulateOperation1MissionsOptions,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING_RECONSIDERED,DialogOptionSelected,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING_ACCEPT_OPTION,PopulateOperation1MissionsOptions,,,,,
+THE_DAUGHTER_OPERATION1_BRIEFING_ACCEPTED,DialogOptionSelected,,,,,
+"#END THE_DAUGHTER_OPERATION1_BRIEFING",,,,,,
+"#END THE_DAUGHTER_OPERATION1",,,,,,
+,,,,,,
 # THE_DAUGHTER_CHAT,,,,,,
 ,,,,,,
 # THE_DAUGHTER_CHAT_QUEST_GIVE_OPTION,,,,,,
@@ -1642,8 +1710,13 @@ She moves closer to you, beaming with excitement. She gives you a small wink the
 THE_DAUGHTER_CHAT_QUEST_GIVE_2,DialogOptionSelected,"$option == theDaughterQuestGive1",,"""Oh, $playerName. You must know that by helping me, you will get your hands dirty. So think long and hard on your answer.""
 
 She gives a wide grin and a look that can pierce hearts at you. 
-""Now choose.""","theDaughterQuestGive2a:Accept
-theDaughterQuestGive2b:Reconsider",
+""Now choose.""","theDaughterQuestGive2b:Reconsider
+theDaughterQuestGive2a:Accept",
+THE_DAUGHTER_CHAT_QUEST_GIVE_END_REJECT,DialogOptionSelected,"$option == theDaughterQuestGive2b",,"You tell her you will think it over.
+
+She tilts her head and gives you a slight smile. 
+
+""Of course you will. Your future in the Nation depends on me.""","theDaughterQuestGiveEND:Leave",
 THE_DAUGHTER_CHAT_QUEST_GIVE_END_ACCEPT,DialogOptionSelected,"$option == theDaughterQuestGive2a","AdjustRepActivePerson WELCOMING 5
 AddPotentialContact eusan_nation_the_daughter
 $player.askedDaughterForWork = true","You accept the offer to work for the Daughter.
@@ -1651,13 +1724,119 @@ $player.askedDaughterForWork = true","You accept the offer to work for the Daugh
 She gives you smile. A rather devious looking one.
 
 ""I knew I can count on you. Remember, your future in the Nation depends on me.""","theDaughterQuestGiveEND:Leave",
-THE_DAUGHTER_CHAT_QUEST_GIVE_END_REJECT,DialogOptionSelected,"$option == theDaughterQuestGive2b",,"You tell her you will think it over.
-
-She tilts her head and gives you a slight smile. 
-
-""Of course you will. Your future in the Nation depends on me.""","theDaughterQuestGiveEND:Leave",
 THE_DAUGHTER_CHAT_QUEST_GIVE_EXIT,DialogOptionSelected,"$option == theDaughterQuestGiveEND","FireAll PopulatetheDaughterChatOptions",,,
 "#END THE_DAUGHTER_CHAT_QUEST_GIVE_OPTION",,,,,,
+,,,,,,
+# THE_DAUGHTER_LUDDIC_CHURCH,,,,,,
+THE_DAUGHTER_LUDDIC_CHURCH_OPTIONS,PopulatetheDaughterChatOptions,"eusan_nation_personRelationChecker FRIENDLY",,,"theDaughterLuddicChurchOption:Tell me about the Luddic Church.",
+THE_DAUGHTER_LUDDIC_CHURCH_1,DialogOptionSelected,"$option == theDaughterLuddicChurchOption",,"She gives you a smile as if you asked her something she really likes to talk about.
+
+""Ah the Luddic Church. The dominate religion of the Persean Sector. ''The masses cry out for salvation! Free us from technology and return to a better time!''""
+
+She gives a small giggle. The mocking tone towards the Luddic faith betrays a contemptuous reaction to the mere mention of Ludd.","theDaughterLuddicChurch1:Continue",
+THE_DAUGHTER_LUDDIC_CHURCH_2,DialogOptionSelected,"$option == theDaughterLuddicChurch1",,"""Luddics are as stupid as they are misguided. At least the ones who openly speak or preach their faith. For the ones who keep it hidden or are reserved about it, it speaks volumes how much those are far more intelligent than their vocal counterparts.""","theDaughterLuddicChurch2:Continue",
+THE_DAUGHTER_LUDDIC_CHURCH_3,DialogOptionSelected,"$option == theDaughterLuddicChurch2",,"""Regardless my dislike and mistrust of Luddics, there is a reason for me to respect the religion. Its large, it has a military force and the Church has a network of informants who may or may not report back to the Knights of Ludd. Worse, they may be reporting to the Luddic Path.""
+
+She smiles a bit. Deviously.
+
+""I like a good challenge with the Path.""","theDaughterLuddicChurch3:Continue",
+THE_DAUGHTER_LUDDIC_CHURCH_4,DialogOptionSelected,"$option == theDaughterLuddicChurch3",,"""The Church likes to portray itself as a legitimate religion. The way I see it, it is a cult slavishly devoted to the truth of one man and that truth is whatever the Church deems it to be. The most interesting thing about the religion is that they would send radicals and extremists to hunt down any historical documents that shows Ludd in the flesh. Very interesting isn't it? Its like they are hiding something.""
+
+The Daughter gives a small chuckle. 
+
+""A smart move. The myth of the man would certainly be deflated if they have portrayals of him as a regular human being. Or anything that shows him being normal. Has to be a prophet.""
+
+""Anyway, thats all I have on the subject. Not a whole bunch to say."" ","theDaughterLuddicChurch4:End Conversation",
+THE_DAUGHTER_LUDDIC_CHURCH_ESCAPE_RETURN,DialogOptionSelected,"$option == theDaughterLuddicChurch4","FireAll PopulatetheDaughterChatOptions",,,
+"#END THE_DAUGHTER_LUDDIC_CHURCH",,,,,,
+,,,,,,
+# THE_DAUGHTER_LUDDIC_PATH,,,,,,
+THE_DAUGHTER_LUDDIC_PATH_OPTIONS,PopulatetheDaughterChatOptions,"eusan_nation_personRelationChecker FRIENDLY",,,"theDaughterLuddicPathOption:Tell me about the Luddic Path.",
+THE_DAUGHTER_LUDDIC_PATH_1,DialogOptionSelected,"$option == theDaughterLuddicPathOption",,"She gives you a smile as if you asked her something she really likes to talk about.
+
+""Ah the Luddic Path. The violent offshoot of the dominate religion of the Persean Sector. Violence, death, destruction, the holy word of Ludd will cleanse the nonbelievers and crush the sinful!""
+
+She gives a small giggle. The mocking tone towards the Luddic faith betrays a contemptuous reaction to the mere mention of Ludd. For the Path, there is something more to her interest.","theDaughterLuddicPath1:Continue",
+THE_DAUGHTER_LUDDIC_PATH_2,DialogOptionSelected,"$option == theDaughterLuddicPath1","FireAll PopulateDaughterLuddicQuestions","""If you want to know my position, is that the Luddic Church is the single most powerful entity the Sector. The Hegemony, Tri-Tachyeon, the Persean League, pirates, and other independents all pale in comparison to the power of the Luddic faith.""
+
+She pauses and looks at your expression as if gauging your reaction.
+
+""Do you know what the Luddic Path is to the Nation?""",,
+THE_DAUGHTER_LUDDIC_PATH_3a,PopulateDaughterLuddicQuestions,"$player.answeredTheDaughter == false",,"
+","theDaughterLuddicPath3a:""They are a potential asset to the Nation""",
+THE_DAUGHTER_LUDDIC_PATH_3b,PopulateDaughterLuddicQuestions,"$player.answeredTheDaughter == false",,,"theDaughterLuddicPath3b:""They are a threat to the Nation""",
+THE_DAUGHTER_LUDDIC_PATH_3c,PopulateDaughterLuddicQuestions,"$player.answeredTheDaughter == false",,,"theDaughterLuddicPath3c:""I don't know.""",
+THE_DAUGHTER_LUDDIC_PATH_3_ANSWERED,PopulateDaughterLuddicQuestions,"$player.answeredTheDaughter == true",,,"theDaughterLuddicPath3answered:""An asset and a threat to the Nation.""",
+THE_DAUGHTER_LUDDIC_PATH_4a,DialogOptionSelected,"$option == theDaughterLuddicPath3a",,"""Excellent answer!""
+
+Her smile changes from warm to more devious. It is almost like she is going to enjoy what she is going to tell you.
+
+""Radicalization of the religious on certain planets is perhaps the easy part. Getting them to do our bidding without letting them know they are manipulated, somewhat difficult but once they realize it, they are too deep into their own hatred it makes no difference.""
+
+""For example, the Luddic faithful on a unspecified planet is presented with a series of targeted media or physical pamphlets, depending on how conservative the target population is. It plays into their fears, their insecurities, their desires, and makes them rethink about their own situation.""
+
+""Nostalgia for an age they never lived. Simplier times when technology wasn't a thing. For the faithful, it a dream, hope or something to strive for. Then they are presented with the obstacles. AI, Technology, consumerism, Tri-Tachyon, the Persean League, etc. Tangible enemies.""","theDaughterLuddicPath4a:Continue",
+THE_DAUGHTER_LUDDIC_PATH_4b,DialogOptionSelected,"$option == theDaughterLuddicPath3b",,"""A good answer."" she says. The Daughter nods her head in approval but you sense she was wanting something else in addition.
+
+""The Luddic Path is perhaps the most insidious threat to face the Nation. They have cells everywhere, even on our capitol planet of Heimat. You must wonder how, despite all of our border controls and Protektor Replikas roaming about, is why the Luddics keep being a gigantic threat to the Nation?""
+
+""The easy answer: sympathy. There are several citizens within the Nation that are sympathetic to the Luddic Church and some get radicalized enough to join the Luddic Path.""","theDaughterLuddicPath4b:Continue",
+THE_DAUGHTER_LUDDIC_PATH_4c,DialogOptionSelected,"$option == theDaughterLuddicPath3c",,"She frowns at you. Clearly not the answer she was looking for. 
+
+""Come on now. You can do better than that.""
+
+Based on her facial expression, she is somewhat disappointed. You clearly have not impressed her with your intelligence. 
+
+""You know what...let me explain...""","theDaughterLuddicPath4c:Continue",
+THE_DAUGHTER_LUDDIC_PATH_4_ANSWERED,DialogOptionSelected,"$option == theDaughterLuddicPath3answered
+$player.answeredTheDaughter == true",,"""Yes!"" she replies, snapping her fingers as if you made a well thought out answer.
+
+""They are both an asset and a threat. What can be useful one day can become a major threat. Such is the life of using proxies to export the revolution to those who cannot see the light.""
+
+""The Luddic Path, if we play our cards right, can become something we can control or manipulate. However, care must be taken or the Path may eventually see us as a threat that exceeds the usual enemies. The Luddic Path may be simpleminded in their violence but never underestimate the lengths they will go to strike their targets.""
+
+""They will try everything, from infiltration of the security services, to using stolen fuel tankers to ram space stations filled with civilians, chanting praises to Ludd.""","theDaughterLuddicPath4answered:Continue",
+THE_DAUGHTER_LUDDIC_PATH_5a,DialogOptionSelected,"$option == theDaughterLuddicPath4a","$player.answeredTheDaughter = true
+AdjustRepActivePerson WELCOMING 5","""Your rights have been trampled on? Blame the Hegemony! AI being intrusive? Blame Tri-Tachyon! The beacon of independence and self-determination being hypocrites? Blame the Persean League! All of this will be presented to the Luddics and continuously emphasized by our outreach. It makes those more willing to join the Path and the Path cares not how or why.""
+
+The Daughter makes a small giggle. 
+
+""The Luddic Path recruits those who have made the logical end run of their religious and political understanding. Those who reach that point, now sees violence as a means to an end. For the Nation, they now have a potential asset willing to enact violence."" 
+
+You can sense that you may have made a very positive impression on her.","theDaughterLuddicPath5:Continue",
+THE_DAUGHTER_LUDDIC_PATH_5b,DialogOptionSelected,"$option == theDaughterLuddicPath4b","$player.answeredTheDaughter = true
+AdjustRepActivePerson WELCOMING 2","""Once in a while you have these radical or extremists that decide to take things in their own hands. Lone actors, these are the most dangerous to defend as they are almost undetectable. Forturnatly our Replikas are able to discern those will ill intent to the merely discontented.""
+
+""A person handing out flyers in the middle of the university square? Not a threat...yet. A person hiding large qualities of chemicals and secretly meeting with an outsider...that is something to look into. We could just try to stamp out the entire religion but those actions create more radicalization.""
+
+You can sense that you may have made a positive impression on her.","theDaughterLuddicPath5:Continue",
+THE_DAUGHTER_LUDDIC_PATH_5c,DialogOptionSelected,"$option == theDaughterLuddicPath4c","$player.answeredTheDaughter = true
+AdjustRepActivePerson NEUTRAL -3","""You could have said ''Oh they are a threat'' or ''They are a potential asset''. Both of those questions would be correct.""
+
+She crosses her arms and gives you a piercing stare as she continues her monologue. 
+
+""Luddic Path are blinded by their hate, their disdain for technology, and their desires for an era that they never lived. For them the red lines have been crossed. My job is to direct those energies away from the Nation and use them to our needs. Sometimes it needs a nudge, other times it needs active nurturing to get them on the path."" 
+
+You can sense that you may have made a negative impression on her.","theDaughterLuddicPath5:Continue",
+THE_DAUGHTER_LUDDIC_PATH_5_ANSWERED,DialogOptionSelected,"$option == theDaughterLuddicPath4answered
+$player.answeredTheDaughter == true",,"""However this presents us an opportunity to rid ourselves of a problem and by extension, use the Luddic Path to our advantage.""
+
+""Sometimes the Luddic Path would attempt to attack us or conduct an large scale event right here on Heimat. Or any planet. What would happen is our Replika forces will sweep them up before things happen. Best case scenario we find ring leaders, surveil them and find how deep the network goes. The Luddic Path has several cells in the Nation. Sleeper cells, undercover agents, or sympathizers. Naturally it is my job to ensure these get taken care of and eliminated. Most do, but sometimes its more beneficial to allow these cells to do their jobs""
+
+She stops for a moment and a creepy smile starts to form. 
+
+""Ah...I just remembered now. We once had a Path cell that was actively recruiting people on Vineta. We got the cell leadership but somehow the lower ranks and recruits still thought the cell was safe. We rushed to rebuild the network in our own terms. Codes, procedures, drops, all gleaned from a deep interrogation of the leaders.""
+
+""We let them run around for a good year and a half before we swept everyone up. You should have seen the looks on their stupid little faces.""","theDaughterLuddicPath5:Continue",
+THE_DAUGHTER_LUDDIC_PATH_6,DialogOptionSelected,"$option ==  theDaughterLuddicPath5",,"""Now you wondering, will this come back to haunt us in the future? It is certainly a possibility. However there is some benefits to us.""
+
+""Obviously my mother disagrees. More than once she intervened to stop a cell from initiating their grand plan. Private talks, some yelling and of course, Protektor operations against the Path cells in question. etc. The end result is a success story for the Nation, a threat neutralized, a Path cell eliminated and growing understanding that the Nation will protect its citizens! Success!""
+
+She throws her hands in the air as to emphasize the success part of her last sentence. A deep breath and exhale she puts her hands down. 
+
+""We all benefit in the end. Now I am sure I have spoken enough so its time to talk about something else.""","theDaughterLuddicPath6:End Conversation","""The Luddic Path has cells in the Nation and they certainly do. Sleeper cells, undercover agents, or sympathizers. Natrually it is my job to ensure these get taken care of and eliminated. Most do, but sometimes its more beneficial to allow these cells to do their jobs."""
+THE_DAUGHTER_LUDDIC_PATH_ESCAPE_RETURN,DialogOptionSelected,"$option == theDaughterLuddicPath6","FireAll PopulatetheDaughterChatOptions",,,
+"#END THE_DAUGHTER_LUDDIC_PATH",,,,,,
 "#END THE_DAUGHTER_CHAT",,,,,,
 ,,,,,,
 # THE_DAUGHTER_CHAT_OPTIONS,,,,,,
@@ -1820,8 +1999,8 @@ Her eyes dart around your face. There is a small pause and she opened her desk a
 ""We have work. Although we have our own people, we can always use the help.""","greatRevolutionaryQuestGive1:Continue",
 THE_GREAT_REVOLUTIONARY_CHAT_QUEST_GIVE_2,DialogOptionSelected,"$option == greatRevolutionaryQuestGive1",,"""Now, Captain $playerName. I won't torture you with details on your duties as you either know about them already or just impatient.""
 
-""So what will it be? Will you help the Nation?""","greatRevolutionaryQuestGive2a:Accept
-greatRevolutionaryQuestGive2b:Reconsider",
+""So what will it be? Will you help the Nation?""","greatRevolutionaryQuestGive2b:Reconsider
+greatRevolutionaryQuestGive2a:Accept",
 THE_GREAT_REVOLUTIONARY_CHAT_QUEST_GIVE_END_ACCEPT,DialogOptionSelected,"$option == greatRevolutionaryQuestGive2a","AdjustRepActivePerson WELCOMING 5
 AddPotentialContact eusan_nation_great_revolutionary
 $player.askedGreatRevolutionaryForWork = true","You accept the offer to work for the Nation.
@@ -2079,4 +2258,42 @@ OR
 "#END THE_GREAT_REVOLUTIONARY_CHAT_OPTIONS",,,,,,
 "#END THE_GREAT_REVOLUTIONARY",,,,,,
 "#END EUSAN_NATION_NPC",,,,,,
+,,,,,,
+# SPECIALS,,,,,,
+,,,,,,
+# IMPERIAL_CIGS_ENCOUNTER,,,,,,
+IMPERIAL_CIGS_ENCOUNTER_START,PopulateOptions,"$menuState == main
+$market.id == ""kitezh_market""
+$tradeMode != NONE
+$player.hasDoneImpCigsEncounter == false
+$global.daysSinceStart > 10
+","SetOptionColor imperialCigsEcounterStart highlight",,"imperialCigsEcounterStart:Check out the commotion at the cargo docks.",
+IMPERIAL_CIGS_ENCOUNTER1,DialogOptionSelected,"$option == imperialCigsEcounterStart","BeginConversation POST:portmaster","At the cargo docks, a group of people are clustered around a series of cargo containers. It seems like there is a heated argument over something. 
+
+As you get closer, you can see the $post with a few Replikas and dockyard workers arguing over the contents of a certain cargo container. The $post throws their hands up in frustration and $heOrShe begins to turn around, shaking their head. Then $heOrShe spots you and they beckon you to come over. 
+
+""Oh you. A spacer from outside the Nation. Maybe you can help me deal with this issue.""","imperialCigsEcounter1:""Help?""",
+IMPERIAL_CIGS_ENCOUNTER2,DialogOptionSelected,"$option == imperialCigsEcounter1",,"""We have a cargo container full of materials that these Replikas have marked illegal to sell by citizens of the Nation. However, due to the wierd nature of the current rules, there isn't anything that prevents non-citizens of the Nation from scooping them up and selling them on the general market.""
+
+The $post balls $hisOrHer fists then opens it again. Clearly frustrated. 
+
+""Its 1000 standard units of cigarettes. However the illegal nature is that they have the Imperial era label. They found a warehouse full of these cigarettes, well stored and sealed. So far, most of the inventory has been shipped off the planet to private buyers.""","imperialCigsEcounter2:Continue",
+IMPERIAL_CIGS_ENCOUNTER3,DialogOptionSelected,"$option == imperialCigsEcounter2",,"""Which leaves us to this particular container. The paperwork got messed up and the Replika's from the Protektors office are being unusually strict. Unless new paperwork comes in or someone who isn't a citizen, its going to sit here collecting dust or get trashed.""
+
+$post sighs and throws their hands up.
+
+""So you want this pile of cigarettes?""","imperialCigsEcounter3a:""Let me think about it...""
+imperialCigsEcounter3b:""Why not...let me get the stack.""",
+IMPERIAL_CIGS_ENCOUNTER4a,DialogOptionSelected,"$option == imperialCigsEcounter3a",,"You answer that you will think about it. Taking such a huge number of cigarettes is not a trivial thing.
+
+""Sure...take your time and let me deal with the Repilkas sure..."" $heOrShe responds sarcastically.","imperialCigsEcounter4:End conversation",
+IMPERIAL_CIGS_ENCOUNTER4b,DialogOptionSelected,"$option == imperialCigsEcounter3b","$player.hasDoneImpCigsEncounter = true
+AddRemoveCommodity eusan_nation_nationsmokes 1000 true
+FireAll PopulateImperialCigEncounter","""Test4b""",,
+IMPERIAL_CIGS_ENCOUNTER_ESCAPE_RETURN,DialogOptionSelected,"$option == imperialCigsEcounterEnd","ShowDefaultVisual
+EndConversation
+FireAll PopulateOptions",,,
+IMPERIAL_CIGS_ENCOUNTER_ESCAPE_OPTION,PopulateImperialCigEncounter,,"SetShortcut imperialCigsEcounterEnd ""ESCAPE""","""You thank the $post and begin to head for the exit.""","imperialCigsEcounterEnd:Exit the Cargo docks.",
+"#END IMPERIAL_CIGS_ENCOUNTER",,,,,,
+"#END SPECIALS",,,,,,
 

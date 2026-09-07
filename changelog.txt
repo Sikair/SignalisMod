@@ -1,3 +1,35 @@
+v0.1.5a
+- Fixing logic issues when entering Cryo in 512 mission and a few punctuation issues.
+- Adding color to designTypeColors in settings.json.
+- Adding a certain encounter regarding a type of cigarettes.
+- Adding Rotfront surface texture and hablight texture.
+- Adding neuro repo mission illustration, 2nd briefing illustration, and associated rules.csv refractor.
+- Added Bioresonance hullmod.
+
+v0.1.4g
+- Fixing Issues with rules.csv regarding entry to 512 mission with more clear instructions and flags.
+- Fixing issues with fleet not intercepting player fleets. Changed back to patrol for now.
+
+v0.1.4f
+- AEON Facility code rewritten by Kaysaar.
+- Adding 4 new portraits with 2 variants.
+- Delete obsolete portraits.
+
+v0.1.4e
+- Temporary commenting out isHidden() and IsFunctional() on Eusan_Nation_Aeon_Facility.java due to issues related to the concept.
+- Adding weapon sounds to the Type 71 built-in, Dangpa, Dory, Galdae, Kompakt, Pebble Hail, Pernach, and Wuiquong.
+- Updating Vineta planet and cloud textures to be softer and less dark.
+- Small grammar changes in rules.csv.
+- Fixing an issue with Ariane's menu dialog because things got omitted.
+
+v0.1.4d
+- Adding new Luddic path and Church topics to The Daughter.
+- Fixing structure not showing correct illustration for AEON Facility.
+- Adding industry/structure illustrations for AEON HQ, AEON Facility, Defense Coordination, Rotfront Hydroponics, and Rotfront Array.
+- Added two blueprint icons, Advanced and Standard.
+- Fixing issues with negative or 999999 ammo for missile weapons with infinite ammo like the Salamander.
+- Adding Null Checks and fixing AEON Facility issues. Ongoing work to AOTD proof it from errors.
+
 v0.1.4c
 - Rules.csv typo fixes. (Homete)
 - Fixed Falke fleet from wandering away because the assignment ends in 365 days after game start. (Homete)

@@ -2,20 +2,24 @@
     "ruleCommandPackages":[
         "data.campaign.rulecmd"
     ],
+    "designTypeColors":{
+        "Eusan Nation":[124,36,30,255]
+    },
     "graphics":{
         "planets":{
             "gas_giant1":"graphics/planets/gas_giant1.png",
             "gas_giant2":"graphics/planets/gas_giant2.png",
-            "vineta_planet":"graphics/planets/vineta_surface.png",
-            "kitezh_planet":"graphics/planets/kitezh_terraformed_terrain.png"
-            
+            "vineta_planet":"graphics/planets/vineta_surface_fix.png",
+            "kitezh_planet":"graphics/planets/kitezh_terraformed_terrain.png",
+            "rotfront_planet":"graphics/planets/rotfront_surface.png"
         },
         "hab_glows":{
             "vineta_habglows":"graphics/planets/vineta_habglows.png",
-            "kitezh_habglows":"graphics/planets/kitezh_habglows.png"
+            "kitezh_habglows":"graphics/planets/kitezh_habglows.png",
+            "rotfront_habglows":"graphics/planets/rotfront_habglows.png"
         },      
         "cloud_layer":{
-            "vineta_clouds":"graphics/planets/vineta_clouds.png"
+            "vineta_clouds":"graphics/planets/vineta_clouds_fixed.png"
         },
         "illustrations":{
             "heimat_market": "graphics/illustrations/heimat_illustration.png",
@@ -25,7 +29,13 @@
             "buyan_market": "graphics/illustrations/buyan_illustration.png",
             "leng_market": "graphics/illustrations/leng_illustration.png",
             "nation_bar": "graphics/illustrations/nation_bar.png",
+            "nation_bar_corrupted": "graphics/illustrations/nation_bar_corrupted.png",
             "rotfront_bar": "graphics/illustrations/rotfront_bar.png",
+            "neural_repo_briefing": "graphics/illustrations/neural_repo_briefing.png",
+            "neural_repo_briefing2": "graphics/illustrations/neural_repo_briefing2.png",
+            "neural_repo_ruins": "graphics/illustrations/neural_repo_ruins.png",
+            "388_briefing": "graphics/illustrations/388_briefing.png",
+            "419_briefing": "graphics/illustrations/419_briefing.png",
             "512_briefing": "graphics/illustrations/512_briefing.png",
             "512_exterior": "graphics/illustrations/512_exterior.png",
             "512_polaroid1": "graphics/illustrations/512_polaroid.png",
@@ -50,10 +60,6 @@
             "eusan_nation_standard_package":"graphics/icons/cargo/bp_eusan_nation_standard.png",
             "eusan_nation_advanced_package":"graphics/icons/cargo/bp_eusan_nation_standard.png"
         },
-        "industry":{
-            "leng_aeon_facility":"graphics/icons/industry/mining.png",
-            "generic_aeon_facility":"graphics/icons/industry/light_industry.png"
-        },
         "eusan_nation_people":{
             "eusan_nation_officer_yeong":"graphics/portraits/characters/eusan_nation_officer_yeong.png",
             "eusan_nation_admiral_falke":"graphics/portraits/characters/eusan_nation_admiralFalke_128.png",
@@ -70,7 +76,10 @@
             "trails_trail_foggy":"graphics/trails/fx/trails_foggy.png",
 			"eusan_nation_lerche_heat":"graphics/ships/fx/eusan_nation_lerche_heat.png",
 			"eusan_nation_station_glow_left":"graphics/ships/fx/eusan_nation_station_missile_l_glow.png",
-			"eusan_nation_station_glow_right":"graphics/ships/fx/eusan_nation_station_missile_r_glow.png"
+			"eusan_nation_station_glow_right":"graphics/ships/fx/eusan_nation_station_missile_r_glow.png",
+			"eusan_nation_revolution_glow_1":"graphics/ships/fx/eusan_nation_revolution_glow_1.png",
+			"eusan_nation_revolution_glow_2":"graphics/ships/fx/eusan_nation_revolution_glow_2.png",
+            "eusan_nation_bioresonance_aura": "graphics/ships/fx/eusan_nation_bioresonance_aura.png"
         }
     }
 }
